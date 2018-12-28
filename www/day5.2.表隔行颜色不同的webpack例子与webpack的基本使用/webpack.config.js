@@ -21,7 +21,8 @@ module.exports = {
   plugins: [ //注意webpack带s的是数组，与vue不同,这是第二种方法启用热更新的第三步
     //new webpack.HotModuleReplacementPlugin()
     new htmlWebpackPlugin({ //创建一个在内存中生成HTML页面的插件
-      template: path.join(__dirname, './src/index.html'), //指定模板页面
+      template: path.join(__dirname, './src/index.html'), /*指定模板页面，注意一点，指定的这个模板在运行时无论怎么修改这个模板都不会触发热更新
+      ，但是修改完模板之后再修改js等相关文件时会触发自动刷新刷新模板内容而不是模板也被热更新。*/
       filename: 'index.html'
       /*  指定生成页面的名称，重名即可，会自动访问同名的内存的页面，当使用了这个插件后，我们不需要手动引入bundle.js
             插件会处理bundle.js的引用路径， */
